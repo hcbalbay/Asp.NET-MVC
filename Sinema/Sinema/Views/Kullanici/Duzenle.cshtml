@@ -1,0 +1,70 @@
+﻿@model Kullanici
+
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title">Kullanıcı Düzenle</h3>
+        <div class="box-tools">
+            <a href="/Kullanici/Index" class="btn btn-danger" title="Geri">
+                <i class="fa fa-reply-all"> Geri</i>
+            </a>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Duzenle", "Kullanici", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {@*Hangi Action,Hangi Controller,get mi post mu ?///formun içiresinde dosya göndereceksek forma bunu eklemeliyiz*@
+    <div class="box-body">
+        @if (ViewBag.Hata != null)
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Uyarı!</h4>
+                @ViewBag.Hata
+            </div>
+        }
+        @Html.ValidationSummary()
+        <div class="form-group">
+            <label>İsim</label>
+            @Html.TextBoxFor(x => x.ad, new { @class = "form-control", @placeholder = "İsim Giriniz", required = "required" })
+            @Html.ValidationMessageFor(x => x.ad)
+        </div>
+        <div class="form-group">
+            <label>Soyisim</label>
+            @Html.TextBoxFor(x => x.soyad, new { @class = "form-control", @placeholder = "Soyad Giriniz", required = "required" })
+            @Html.ValidationMessageFor(x => x.soyad)
+        </div>
+        <div class="form-group">
+            <label>Email Adresi</label>
+            @Html.TextBoxFor(x => x.mail, new { @class = "form-control", @type = "email", @placeholder = "Mail Giriniz", required = "required" })
+            @Html.ValidationMessageFor(x => x.mail)
+        </div>
+        <div class="form-group">
+            <label>Şifre</label>
+            @Html.TextBoxFor(x => x.sifre, new { @class = "form-control", @placeholder = "Şifre Giriniz", required = "required" })
+            @Html.ValidationMessageFor(x => x.sifre)
+        </div>
+        <div class="form-group">
+            <label>Telefon</label>
+            @Html.TextBoxFor(x => x.telefon, new { @class = "form-control",@minlength=11, @maxlength = 11, pattern = @"\d{11}", @title="Telefon 11 haneden oluşmalıdır ve harf girilemez!", @placeholder = "Telefon Giriniz" })
+            @Html.ValidationMessageFor(x => x.telefon)
+        </div>
+        <div class="form-group">
+            <label>Yetki</label>
+            @Html.DropDownList("yetkiID", (SelectList)ViewBag.Yetkiler, "Yetki Seçin", new { @class = "form-control", required = "required" })@*(ismi,arka tarafa hangi değişken ile gönderilecek,liste,önde gösterilecek yazı,html özelliği)*@
+        </div>
+        <div class="form-group">
+            <label>Resim Seç</label>
+            <div class="callout callout-success">
+                <img src="~/Content/Resimler/@Model.resim" class="img-rounded" style="width:100px;" /><b> Fotoğrafta değişiklik yapmak istemiyorsanız boş bırakınız!!!</b>
+            </div>
+            <input name="resimGelen" type="file">
+        </div>
+
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+        <button type="submit" class="btn btn-success">Kaydet</button>
+    </div>
+}
+</div>

@@ -1,0 +1,123 @@
+﻿@model List<Film>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Filmler</h3>
+        <div class="box-tools">
+            <a href="/Film/Ekle" class="btn btn-success" title="Yeni Film Ekle">
+                <i class="fa fa-plus-square"> Film Ekle</i>
+            </a>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body no-padding">
+        <table class="table table-condensed">
+            <tbody>
+
+                @foreach (var film in Model)
+                { 
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            <img class="profile-user-img img-responsive" src="~/Content/Resimler/@film.resim" alt="User profile picture">
+
+                            <h3 class="profile-username text-center">@film.ad</h3>
+                            @{ if (film.YasGrup.ad == "Genel İzleyici")
+                                {
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-info">@film.Tur.ad</span></p>
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-success">@film.YasGrup.ad</span></p>}
+                                if (film.YasGrup.ad == "7+")
+                                {
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-info">@film.Tur.ad</span></p>
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-success">@film.YasGrup.ad</span></p> }
+                                if (film.YasGrup.ad == "13+")
+                                {
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-info">@film.Tur.ad</span></p>
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-warning">@film.YasGrup.ad</span></p> }
+                                if (film.YasGrup.ad == "15+")
+                                {
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-info">@film.Tur.ad</span></p>
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-warning">@film.YasGrup.ad</span></p> }
+                                if (film.YasGrup.ad == "18+")
+                                {
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-info">@film.Tur.ad</span></p>
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-danger">@film.YasGrup.ad</span></p> }
+                                if (film.YasGrup.ad == "Şiddet-Korku")
+                                {
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-info">@film.Tur.ad</span></p>
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-danger">@film.YasGrup.ad</span></p>}
+                                if (film.YasGrup.ad == "Cinsellik")
+                                {
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-info">@film.Tur.ad</span></p>
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-danger">@film.YasGrup.ad</span></p> }
+                                if (film.YasGrup.ad == "Olumsuz Örnek")
+                                {
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-info">@film.Tur.ad</span></p>
+                                    <p class="text-muted text-center"><span style="text-align:center" class="label label-danger">@film.YasGrup.ad</span></p> }
+                            }
+                                    <ul class="list-group list-group-unbordered">
+                                        <li class="list-group-item">
+                                            <b>Açıklama:</b> <span>@film.aciklama</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Vizyon Tarihi:</b> <span class="date">@film.vizyontarih.Value.ToShortDateString()</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Seans:</b> <span>@film.seans</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Salon</b> <span>@film.salon</span>
+                                        </li>
+                                        @*Yaş grup ifleri*@
+                                        <li class="list-group-item">
+                                            <b>Yaş Grubu:</b>
+                                            @{ if (film.YasGrup.ad == "Genel İzleyici")
+                                                {<span style="text-align:center" class="label label-success">@film.YasGrup.ad</span>}
+                                            if (film.YasGrup.ad == "7+")
+                                            {<span style="text-align:center" class="label label-success">@film.YasGrup.ad</span> }
+                                        if (film.YasGrup.ad == "13+")
+                                        {<span style="text-align:center" class="label label-warning">@film.YasGrup.ad</span> }
+                                    if (film.YasGrup.ad == "15+")
+                                    {<span style="text-align:center" class="label label-warning">@film.YasGrup.ad</span>}
+                                if (film.YasGrup.ad == "18+")
+                                {<span style="text-align:center" class="label label-danger">@film.YasGrup.ad</span> }
+                                if (film.YasGrup.ad == "Şiddet-Korku")
+                                {<span style="text-align:center" class="label label-danger">@film.YasGrup.ad</span>}
+                                if (film.YasGrup.ad == "Cinsellik")
+                                {<span style="text-align:center" class="label label-danger">@film.YasGrup.ad</span> }
+                                if (film.YasGrup.ad == "Olumsuz Örnek")
+                                {<span style="text-align:center" class="label label-danger">@film.YasGrup.ad</span>}
+                                            }
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Tür:</b> <span style="text-align:center" class="label label-info">@film.Tur.ad</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Yönetmen:</b> <span>@film.yonetmen</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Fragman:</b> <a href="https://www.youtube.com/watch?v=@film.fragman" target="_blank">https://www.youtube.com/watch?v=@film.fragman</a>
+                                        </li>
+                                    </ul>
+
+                            <a href="/Film/Sil/@film.filmID" class="btn btn-danger btn-block"  onclick="return confirm('Kullanıcıyı silmek istediğinize emin misiniz?')">
+                                <i class="fa fa-trash"></i>
+                                <b>Sil</b>
+                            </a>
+                            <a href="/Film/Duzenle/@film.filmID" class="btn btn-primary btn-block">
+                                <i class="fa fa-edit"></i>
+                                <b>Düzenle</b>
+                            </a>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>

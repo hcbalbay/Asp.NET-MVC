@@ -1,0 +1,92 @@
+﻿@{
+    Kullanici k = (Kullanici)Session["Kullanici"];
+    Layout = "~/Views/Shared/_LayoutDis.cshtml";
+}
+@model Bilet
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cinema A Entertainment Category Flat Bootstarp Resposive Website Template | Reviews :: w3layouts</title>
+    <link href="~/Content/AnaSayfa/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <link href="~/Content/AnaSayfa/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Custom Theme files -->
+    <script src="~/Content/AnaSayfa/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Cinema Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfont-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <!-- header-section-starts -->
+    @if (k != null)
+    {
+        <div>
+            <div>
+                <div class="review-content">
+                    <div class="reviews-section">
+                        <h3 class="head">Kullanıcı Profili</h3>
+                        <div class="col-md-9 reviews-grids">
+                            <div class="review">
+                                <div class="movie-pic">
+                                    <a><img src="~/Content/Resimler/@k.resim" alt="" /></a>
+                                </div>
+                                <div class="review-info">
+                                    <a class="span">@k.ad  @k.soyad</a>
+                                    <p class="dirctr">@k.Yetki.ad</p>
+                                    <p class="ratingview">Hediye Biletlerim: @Model.hediyebilet</p>
+                                    <div class="clearfix"></div>
+                                    <p class="ratingview c-rating">Toplam Aldığım Bilet:</p>
+                                    <div class="clearfix"></div>
+
+                                    <p class="info">Telefon Numarası:&nbsp;&nbsp;&nbsp;@k.telefon</p>
+                                    <p class="info">Şifre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;@k.sifre</p>
+                                    <p class="info">Mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;@k.mail</p>
+
+
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="yrw">
+                                <div class="rtm text-center">
+                                    <a href="/AnaSayfa/KullaniciSil/@k.kullaniciID" onclick="return confirm('Sizi bir daha göremeyeceğimiz için üzgünüz ☹. Kararınızdan Eminseniz Lütfen Onaylayın.')" )>Hesabımı Sil</a>
+                                </div>
+                                <div class="wt text-center">
+                                    <a href="/AnaSayfa/ProfilDuzenle/@k.kullaniciID">Profilimi Düzenle</a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 side-bar">
+
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    }
+    else
+    {
+        <div style="width:100%" class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-ban"></i> Uyarı!</h4>
+
+        <h3>Lütfen Kayıt Olunuz veya Giriş Yapınız! </h3>
+        </div>
+    }
+
+</body>
+</html>

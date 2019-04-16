@@ -1,0 +1,38 @@
+﻿@model List<Film>
+<div class="review-slider">
+    <ul id="flexiselDemo1">
+        @foreach (var film in Model)
+        {
+
+            <li><img width="300" height="300" src="~/Content/Resimler/@film.resim" alt="" /></li>
+        }
+    </ul>
+    <script type="text/javascript">
+        $(window).load(function () {
+
+            $("#flexiselDemo1").flexisel({
+                visibleItems: 6,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: false,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 2
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 3
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 4
+                    }
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript" src="/Content/AnaSayfa/js/jquery.flexisel.js"></script>
+</div>

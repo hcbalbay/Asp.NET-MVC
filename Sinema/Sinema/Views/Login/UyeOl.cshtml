@@ -1,0 +1,187 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>CineWood</title>
+    <link rel="shortcut icon" href="~/Content/Resimler/icon.jpg" />
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Spin Login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta-Tags -->
+    <!-- Stylesheets -->
+    <link href="/Content/Login/css/font-awesome.css" rel="stylesheet">
+    <link href="/Content/Login/css/style.css" rel='stylesheet' type='text/css' />
+    <!--// Stylesheets -->
+    <!--fonts-->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <!--//fonts-->
+</head>
+
+<body>
+    <h1>Kayıt Ol </h1>
+    <div class="clear-loading spinner">
+        <span></span>
+    </div>
+    <div class="w3ls-login box box--big">
+        <!-- form starts here -->
+        @using (Html.BeginForm("UyeOl", "Login", FormMethod.Post))
+        {
+            if (ViewBag.Hata != null)
+            {
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>@ViewBag.Hata</strong>
+                </div>
+            }
+            if (ViewBag.Mesaj != null)
+            {
+                <div class="halert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>@ViewBag.Mesaj</strong>
+                </div>
+            }
+            <div class="agile-field-txt">
+                <label><i class="fa fa-user" aria-hidden="true"></i>İsim </label>
+                <input type="text" name="ad" placeholder="İsim Giriniz..." required="" />
+            </div>
+            <div class="agile-field-txt">
+                <label><i class="fa fa-user" aria-hidden="true"></i>Soyisim </label>
+                <input type="text" name="soyad" placeholder="Soyisim Giriniz..." required="" />
+            </div>
+            <div class="agile-field-txt">
+                <label><i class="fa fa-envelope" aria-hidden="true"></i> Email </label>
+                <input type="email" name="mail" placeholder="Email Giriniz..." required="" />
+            </div>
+            <div class="agile-field-txt">
+                <label><i class="fa fa-phone" aria-hidden="true"></i>Telefon </label>
+                <input pattern="\d{11}" title="11 Haneli Telefon Numaranızı Giriniz" minlength="11" maxlength="11" type="text" name="telefon" placeholder="Telefon Numarası Giriniz..." required="" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" />
+            </div>
+            <div class="agile-field-txt">
+                <label><i class="fa fa-unlock-alt" aria-hidden="true"></i> Şifre </label>
+                <input type="password" name="sifre" placeholder="Şifre Giriniz..." required="" id="myInput" />
+                <div class="agile_label">
+                    <input id="check3" name="check3" type="checkbox" value="show password" onclick="myFunction()">
+                    <label class="check" for="check3">Şifreyi Göster</label>
+
+                </div>
+                <div class="haluk">
+                    <a style="color:#fd5c63" href="/AnaSayfa/Index" class="text-center">Geri</a>
+                </div>
+            </div>
+            <!-- script for show password -->
+            <script>
+                function myFunction() {
+                    var x = document.getElementById("myInput");
+                    if (x.type === "password") {
+                        x.type = "text";
+                    } else {
+                        x.type = "password";
+                    }
+                }
+            </script>
+            <!-- //end script -->
+            <input type="submit" value="KAYIT OL">
+        }
+    </div>
+    <!-- //form ends here -->
+    <!--copyright-->
+    <div class="copy-wthree">
+        <p>
+            © @DateTime.Now.Year Created By | Haluk Can Balbay
+        </p>
+    </div>
+    <!--//copyright-->
+    <!--//Login Uyarı Designed By Haluk Can Balbay -->
+    <style>
+        .haluk {
+            text-align: right;
+            margin: 20px 0 0px 10px;
+            text-transform: capitalize;
+            letter-spacing: 2px;
+        }
+
+        .alert {
+            color: #fff;
+            width: 500%;
+            margin: auto;
+            padding: 0.7em 0;
+            margin-top: 0em;
+            font-size: 1em;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+            font-weight: 6000;
+            background: #fd5c63;
+            color: #fff;
+            border: 1px solid transparent;
+            font-family: 'Source Sans Pro', sans-serif;
+            transition: 0.5s all ease;
+            -webkit-transition: 0.5s all ease;
+            -moz-transition: 0.5s all ease;
+            -o-transition: 0.5s all ease;
+            -ms-transition: 0.5s all ease;
+        }
+        .halert {
+            color: #fff;
+            width: 500%;
+            margin: auto;
+            padding: 0.7em 0;
+            margin-top: 0em;
+            font-size: 1em;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+            font-weight: 6000;
+            background: #5df48d;
+            color: #fff;
+            border: 1px solid transparent;
+            font-family: 'Source Sans Pro', sans-serif;
+            transition: 0.5s all ease;
+            -webkit-transition: 0.5s all ease;
+            -moz-transition: 0.5s all ease;
+            -o-transition: 0.5s all ease;
+            -ms-transition: 0.5s all ease;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .closebtn:hover {
+                color: black;
+            }
+    </style>
+</body>
+</html>

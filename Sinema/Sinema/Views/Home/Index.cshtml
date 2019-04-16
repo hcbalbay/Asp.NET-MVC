@@ -1,0 +1,24 @@
+﻿@{
+    Kullanici k = (Kullanici)Session["Kullanici"];
+}
+<div class="callout callout-info">
+    <h4>Hoşgeldiniz!</h4>
+
+    <h3>Sayın @k.ad @k.soyad </h3>
+</div>
+<div class="info-box bg-aqua">
+    <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
+
+    <div class="info-box-content">
+        <span class="info-box-text">Bilgilendirme</span>
+        <span class="info-box-number">Yapım Aşamasında...</span>
+
+        <div class="progress">
+            <div class="progress-bar" style="width: 70%"></div>
+        </div>
+        <span class="progress-description">
+            Yakında...
+        </span>
+    </div>
+    <!-- /.info-box-content -->
+</div>

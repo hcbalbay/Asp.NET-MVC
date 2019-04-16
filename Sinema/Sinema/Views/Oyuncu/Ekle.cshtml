@@ -1,0 +1,85 @@
+﻿@model Oyuncu
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title">Yeni Oyuncu</h3>
+        <div class="box-tools">
+            <a href="/Oyuncu/Index" class="btn btn-danger" title="Geri">
+                <i class="fa fa-reply-all"> Geri</i>
+            </a>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Ekle", "Oyuncu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="box-body">
+        @if (ViewBag.Hata != null)
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Uyarı!</h4>
+                @ViewBag.Hata
+            </div>
+        }<div>
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    @Html.ValidationSummary()
+</div>
+        <div class="form-group">
+            <label>İsim</label>
+            <input name="ad" class="form-control" placeholder="İsim Giriniz">
+        </div>
+        <div class="form-group">
+            <label>Soyisim</label>
+            <input name="soyad" class="form-control" placeholder="Soyisim Giriniz">
+        </div>
+
+        <div class="form-group">
+            <label>Resim Seç</label>
+            <input  required="required" name="resimGelen" type="file">
+        </div>
+
+    </div>
+        <!-- /.box-body -->
+
+        <div class="box-footer">
+            <button type="submit" class="btn btn-success">Ekle</button>
+        </div>
+    }
+</div>
+<style>
+    .validation-summary-errors {
+        color: #fff;
+        padding: 0.7em 0;
+        margin-top: 0em;
+        font-size: 1em;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        font-weight: 600;
+        background: #d82830;
+        color: #fff;
+        border: 1px solid transparent;
+        font-family: 'Source Sans Pro', sans-serif;
+        transition: 0.5s all ease;
+        -webkit-transition: 0.5s all ease;
+        -moz-transition: 0.5s all ease;
+        -o-transition: 0.5s all ease;
+        -ms-transition: 0.5s all ease;
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 25px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .closebtn:hover {
+            color: black;
+        }
+</style>

@@ -1,0 +1,59 @@
+﻿@model List <Oyuncu>
+@{
+    ViewBag.Title = "Index";
+
+}
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Oyuncular</h3>
+        <div class="box-tools">
+            <a href="/Oyuncu/Ekle" class="btn btn-success" title="Yeni Oyuncu Ekle">
+                <i class="fa fa-user-plus"> Oyuncu Ekle</i>
+            </a>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body no-padding">
+        <table class="table table-condensed">
+            <tbody>
+                <tr>
+                    <th style="width: 10px">No.</th>
+                    <th>İsim</th>
+                    <th>Soyisim</th>
+                    <th>Fotoğraf</th>
+                    <th style="text-align:center">İşlemler</th>
+                </tr>
+                @foreach (var oyuncu in Model)
+                {
+
+                <tr>
+                    <td class="counterCell"></td>
+                    <td>@oyuncu.ad</td>
+                    <td>@oyuncu.soyad</td>
+                    <td><img src="~/Content/Resimler/@oyuncu.resim" width="40px" class="img-circle" /></td>
+                    <td style="text-align:center">
+                        <a href="/Oyuncu/Sil/@oyuncu.oyuncuID" class="btn btn-danger" title="Sil"  onclick="return confirm('Kullanıcıyı silmek istediğinize emin misiniz?')">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                        <a href="/Oyuncu/Duzenle/@oyuncu.oyuncuID" class="btn btn-info" title="Duzenle">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>
+<style>
+    table {
+        counter-reset: tableCount;
+    }
+
+    .counterCell:before {
+        content: counter(tableCount);
+        counter-increment: tableCount;
+    }
+</style>

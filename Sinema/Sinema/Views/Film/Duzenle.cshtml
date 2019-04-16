@@ -1,0 +1,86 @@
+﻿@model Film
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title">Film Düzenle</h3>
+        <div class="box-tools">
+            <a href="/Film/Index" class="btn btn-danger" title="Geri">
+                <i class="fa fa-reply-all"> Geri</i>
+            </a>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Duzenle", "Film", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="box-body">
+            @if (ViewBag.Hata != null)
+            {
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Uyarı!</h4>
+                    @ViewBag.Hata
+                </div>
+            }
+                <div class="form-group">
+                    <label>Film İsim</label>
+                    @Html.TextBoxFor(x => x.ad, new { @class = "form-control", @placeholder = "Film Adını Giriniz", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label>Açıklama:</label>
+                    @Html.TextAreaFor(x => x.aciklama, new { @class = "form-control", @placeholder = "Açıklama Giriniz" })
+                </div>
+                <div class="form-group">
+                    <label>Vizyon Tarihi</label>
+                    @Html.TextBoxFor(x => x.vizyontarih,"{0:dd/MM/yyyy}", new { @class = "form-control", @placeholder = "Vizyon Tarihi Giriniz", required = "required" })
+                </div>
+            @*Tarih Box'ı*@
+            @*<div class="form-group">
+                    <label>Vizyon Tarihi:</label>
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input name="vizyontarih" type="text" class="form-control pull-right" id="datepicker">
+                    </div>
+                    <!-- /.input group -->
+                </div>*@
+                <div class="form-group">
+                    <label>Seans</label>
+                    @Html.TextBoxFor(x => x.seans, new { @class = "form-control", @placeholder = "Seans Giriniz", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label>Salon</label>
+                    @Html.TextBoxFor(x => x.salon, new { @class = "form-control", @placeholder = "Salon Giriniz", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label>Fragman</label>
+                    @Html.TextBoxFor(x => x.fragman, new { @class = "form-control", @placeholder = "Fragman Giriniz" })
+                </div>
+                <div class="form-group">
+                    <label>Yönetmen</label>
+                    @Html.TextBoxFor(x => x.yonetmen, new { @class = "form-control", @placeholder = "Yönetmen Giriniz" })
+                </div>
+            <div class="form-group">
+                <label>Film Türü</label>
+                @Html.DropDownList("turID", (SelectList)ViewBag.Turler, "Film Türü Seçin", new { @class = "form-control", required = "required" })
+            </div>
+            <div class="form-group">
+                <label>Yaş Grubu</label>
+                @Html.DropDownList("yasgrupID", (SelectList)ViewBag.Yaslar, "Yaş Grubu Seçin", new { @class = "form-control", required = "required" })
+            </div>
+            <div class="form-group">
+                <label>Resim Seç</label>
+                <div class="callout callout-success">
+                    <img src="~/Content/Resimler/@Model.resim" class="img-rounded" style="width:100px;" /><b> Fotoğrafta değişiklik yapmak istemiyorsanız boş bırakınız!!!</b>
+                </div>
+                <input name="resimGelen" type="file">
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+
+        <div class="box-footer">
+            <button type="submit" class="btn btn-success">Kaydet</button>
+        </div>
+    }
+</div>

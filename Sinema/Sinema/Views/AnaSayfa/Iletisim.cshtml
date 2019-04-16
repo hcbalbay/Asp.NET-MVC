@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/_LayoutDis.cshtml";
+}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cinema A Entertainment Category Flat Bootstarp Resposive Website Template | Contact :: w3layouts</title>
+    <link href="/Content/AnaSayfa/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <link href="/Content/AnaSayfa/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Custom Theme files -->
+    <script src="/Content/AnaSayfa/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Cinema Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfont-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <!-- header-section-starts -->
+    <div>
+        <div>
+            <div class="contact-content">
+                <!---contact-->
+                <div class="main-contact">
+                    <h3 class="head">BİZİMLE İLETİŞİME GEÇİN</h3>
+                    <p>sana yardım etmek için her zaman buradayız...</p>
+                    <div class="contact-form">
+                        @using (Html.BeginForm())
+                        {
+                            if (ViewBag.Sonuc != null)
+                            {
+                                <div class="alert alert-success alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h4><i class="icon fa fa-check"></i> Bilgilendirme!</h4>
+                                    @ViewBag.Sonuc
+                                </div>
+                            }
+                            <div class="col-md-6 contact-left">
+                                <input name="ad" type="text" placeholder="Adınız..." required />
+                                <input name="soyad" type="text" placeholder="Soyadınız..." required />
+                                <input name="eposta" type="text" placeholder="Eposta Adresiniz..." required />
+                                <input name="telefon" pattern="\d{11}" maxlength="11" minlength="11" title="11 Haneli Telefon Numaranızı Giriniz" type="text" placeholder="Telefon Numaranız..." required />
+                            </div>
+                            <div class="col-md-6 contact-right">
+                                <input name="konu" type="text" placeholder="Başlık" required />
+                                <textarea name="mesaj" placeholder="Mesajınız..."></textarea>
+                                <input type="submit" value="GÖNDER" />
+                            </div>
+                            <div class="clearfix"></div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+</body>
+</html>

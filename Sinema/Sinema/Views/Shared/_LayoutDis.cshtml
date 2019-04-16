@@ -1,0 +1,145 @@
+﻿@{
+    Kullanici k = (Kullanici)Session["Kullanici"];
+}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CineWood</title>
+    <link rel="shortcut icon" href="~/Content/Resimler/icon.jpg" />
+    <link href="/Content/AnaSAyfa/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <link href="/Content/AnaSAyfa/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/Content/Tema/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/Content/Tema/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Custom Theme files -->
+    <script src="/Content/AnaSayfa/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Cinema Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfont-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+    <!-- header-section-starts -->
+    <div class="full">
+        <div class="menu">
+            <ul>
+                <li><a class="active" href="/AnaSayfa/Index"><i class="home"></i></a></li>
+                <li><a href="/AnaSayfa/Fragman"><div class="video"><i class="videos"></i><i class="videos1"></i></div></a></li>
+                @if (k != null)
+                {
+                    <li><a href="/AnaSayfa/KullaniciProfil/@k.kullaniciID"><div class="cat"><i class="watching"></i><i class="watching1"></i></div></a></li>
+                }
+                    <li><a href="/AnaSayfa/Iletisim"><div class="cnt"><i class="contact"></i><i class="contact1"></i></div></a></li>
+                </ul>
+
+        </div>
+        <div class="main">
+            <div class="headerh">
+                <div class="top-header" style="background-color:#383838">
+                    <div class="logo">
+                        <a href="/AnaSayfa/Index"><img src="/Content/AnaSayfa/images/logo2.png" alt="" /></a>
+                        @if (k != null)
+                        {<p style="font-size:16px; color:#DFB636">@k.ad @k.soyad</p>@*36B6DF*@
+
+                    }
+                    else
+                    {
+
+                    }
+                    </div>
+                    @if (k != null)
+                    {
+                        if (k.yetkiID == 1)
+                        {
+                            <a style="right:0" class="logbuton" href="/Login/Cikis"><i class="fa fa-sign-out">&nbsp;&nbsp;Çıkış</i></a>
+                            <a style="right:0" class="logbuton" href="/Home/Index"><i class="fa fa-unlock-alt">&nbsp;&nbsp;Panel</i></a>
+                        }
+                        else
+                        {<a style="right:0" class="logbuton" href="/Login/Cikis"><i class="fa fa-sign-out">&nbsp;&nbsp;Çıkış</i></a>}
+
+                    }
+                    else
+                    {
+
+                    }
+
+                    @if (k == null)
+                    {
+                        <a style="right:0" class="logbuton" href="/Login/Index"><i class="fa fa-sign-in">&nbsp;&nbsp;Giriş</i></a>
+                        <a style="right:0" class="logbuton" href="/Login/UyeOl"><i class="fa fa-address-card">&nbsp;&nbsp;Kayıt Ol</i></a>
+
+                    }
+                    else
+                    {
+
+                    }
+
+                    <script type="text/javascript" src="/Content/AnaSayfa/js/jquery.flexisel.js"></script>
+                    <script type="text/javascript" src="~/Content/AnaSayfa/js/jquery.magnific-popup.js"></script>
+                    <div class="clearfix"></div>
+                </div>
+                @RenderBody()
+            </div>
+
+            <div class="footer">
+                <h6>Açıklama : </h6>
+                <p class="claim">Bu site Haluk Can Balbay tarafından geliştirilmiştir.</p>
+                <h6>
+                    Düzce Üniversitesi
+                </h6>
+                <a href="example@mail.com">halukcanbalbay@hotmail.com</a>
+                <div class="copyright">
+                    <p> Template by  <a href="http://w3layouts.com">  W3layouts</a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+</body>
+</html>
+<style>
+    .logbuton {
+        background-color: #dfb636;
+        text-align: center;
+        text-decoration: none;
+        padding: 12px 25px 12px 15px;
+        color: #fff;
+        font-weight: 60;
+        border-radius: 5px;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 5px;
+        border-bottom: 3px solid #2d2d2d;
+        width: 10%;
+        display: block;
+        margin-top: 2px;
+        float: right;
+    }
+
+        .logbuton:hover {
+            background: #000;
+            border-bottom: 3px solid #000;
+        }
+    .headerh {
+        height: 100%;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        min-height: 750px;
+    }
+</style>

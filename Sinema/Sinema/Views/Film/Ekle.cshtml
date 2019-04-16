@@ -1,0 +1,142 @@
+﻿@model Film
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title">Yeni Film</h3>
+        <div class="box-tools">
+            <a href="/Film/Index" class="btn btn-danger" title="Geri">
+                <i class="fa fa-reply-all"> Geri</i>
+            </a>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Ekle", "Film", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="box-body">
+        @if (ViewBag.Hata != null)
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Uyarı!</h4>
+                @ViewBag.Hata
+            </div>
+        }<div>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            @Html.ValidationSummary()
+        </div>
+        <div class="form-group">
+            <label>Film İsim</label>
+            <input name="ad" class="form-control" placeholder="Film İsimini Giriniz">
+            @Html.ValidationMessageFor(x => x.ad)
+        </div>
+        <div class="form-group">
+            <label>Açıklama:</label>
+            <textarea name="aciklama" class="form-control" rows="3" placeholder="Açıklama Giriniz"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Vizyon Tarihi</label>
+
+            <div class="input-group date">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input placeholder="Vizyon Tarihi Giriniz"  name="vizyontarih" type="date" class="form-control pull-right" id="datepicker">
+            </div>
+            <!-- /.input group -->
+        </div>
+        @*Tarih Box'ı*@
+        @*<div class="form-group">
+            <label>Vizyon Tarihi:</label>
+            <div class="input-group date">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input name="vizyontarih" type="text" class="form-control pull-right" id="datepicker">
+            </div>
+            <!-- /.input group -->
+        </div>*@
+        <div class="bootstrap-timepicker">
+                <div class="form-group">
+                    <label>Seans:</label>
+
+                  <div class="input-group">
+                    <input name="seans" type="time" class="form-control timepicker" placeholder="Seans Giriniz">
+
+                    <div class="input-group-addon">
+                      <i class="fa fa-clock-o"></i>
+                    </div>
+                  </div>
+                  <!-- /.input group -->
+                </div>
+                <!-- /.form group -->
+              </div>
+        <div class="form-group">
+            <label>Salon</label>
+            <input name="salon" class="form-control" placeholder="Salon Giriniz">
+        </div>
+        <div class="form-group">
+            <label>Fragman</label>
+            <input name="fragman" class="form-control" placeholder="Fragman Linki Giriniz">
+        </div>
+        <div class="form-group">
+            <label>Yönetmen</label>
+            <input name="yonetmen" class="form-control" placeholder="Yönetmen Giriniz">
+        </div>
+        <div class="form-group">
+            <label>Film Türü</label>
+            @Html.DropDownList("turID", (SelectList)ViewBag.Turler, "Film Türü Seçin", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Yaş Grubu</label>
+            @Html.DropDownList("yasgrupID", (SelectList)ViewBag.Yaslar, "Yaş Grubu Seçin", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Resim Seç</label>
+            <input required="required" name="resimGelen" type="file">
+        </div>
+
+    </div>
+        <!-- /.box-body -->
+
+        <div class="box-footer">
+            <button type="submit" class="btn btn-success">Ekle</button>
+        </div>
+    }
+</div>
+<style>
+    .validation-summary-errors {
+        color: #fff;
+        padding: 0.7em 0;
+        margin-top: 0em;
+        font-size: 1em;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        font-weight: 600;
+        background: #d82830;
+        color: #fff;
+        border: 1px solid transparent;
+        font-family: 'Source Sans Pro', sans-serif;
+        transition: 0.5s all ease;
+        -webkit-transition: 0.5s all ease;
+        -moz-transition: 0.5s all ease;
+        -o-transition: 0.5s all ease;
+        -ms-transition: 0.5s all ease;
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 25px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .closebtn:hover {
+            color: black;
+        }
+</style>

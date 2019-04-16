@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDis.cshtml";
+}
+@model FilmDonguModelView
+<html>
+<body>
+    <div class="header">
+        <div class="header-info">
+            <h3 style="color:white">@Model.film.ad</h3>
+            <p class="age"><a>@Model.film.YasGrup.ad </a> @Model.oyuncu.ad,&nbsp; @Model.oyuncu.soyad</p>@*Burada çoklu tablo ilişkisi yüzünden bir ModelView oluşturdum. Partial yapmamamın sebebi tek bir partialda iki farklı tablo olması*@
+            <p class="review">Vizyon Tarihi:	&nbsp;: &nbsp; @Model.film.vizyontarih.Value.ToShortDateString()</p>
+            <p class="review reviewgo">Tür	&nbsp;&nbsp; : &nbsp; @Model.film.Tur.ad</p>
+            <p class="review">Yönetmen &nbsp;&nbsp;: &nbsp; @Model.film.yonetmen</p>
+            <p class="special">@Model.film.aciklama</p>
+            <a class="video" target="_blank" href="https://www.youtube.com/watch?v=@Model.film.fragman"><i class="video1"></i>FRAGMANI İZLE</a>
+            <a class="book" href="/Bilet/Index/@Model.film.filmID"><i class="book1"></i>BİLET AL</a>
+        </div>
+    </div>
+    @Html.Partial("~/Views/AnaSayfa/Partial/_filmDongu.cshtml", Model.filmler)
+    <div class="video">
+        <iframe src="https://www.youtube.com/embed/2LqzF5WauAw" frameborder="0" allowfullscreen></iframe>
+    </div>
+</body>
+
+</html>
